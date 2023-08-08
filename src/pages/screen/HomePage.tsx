@@ -6,7 +6,9 @@ const HomePage = () => {
         <div>
             <Container>
                 <Main>
-                    <Text>Home</Text>
+                  
+HOME
+
                 </Main>
             </Container>
         </div>
@@ -15,15 +17,24 @@ const HomePage = () => {
 
 export default HomePage
 
-const Text = styled.div`
+const Text   = styled.div`
 padding-left: 10px
 `
 
 const Main = styled.div`
-
+width: 90%;
+height: 90vh;
+justify-content: center;
+align-items: center;
+display: flex;
 `
 
 const Container = styled.div`
-
+width: 100%;
+min-height: 70vh;
+/* display: flex; */
+/* justify-content: center;
+align-items: center; */
+background-color: red;
 
 `

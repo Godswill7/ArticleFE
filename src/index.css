@@ -1,12 +1,12 @@
 :root {
-  --appRed:rgb(128, 195, 128);
-  --appBG:rgb(125, 251, 125);
-  --appText: green;
-  --appBorderL: rgb(108, 126, 108);
-  --appBorder: rgb(108, 126, 108);
-  --appMainColor: green;
-  --appAuth: rgb(44, 65, 44);
-  --appRadiusSmall: 3px;
+  --appRed:rgb(117, 95, 95);
+  --appBG: rgb(155, 78, 78);
+  --appText:rgb(169, 16, 16);
+  --appBorderL: rgb(198, 112, 112);
+  --appBorder: rgb(132, 26, 26);
+  --appMainColor: rgb(172, 151, 151);
+  --appAuth: rgb(65, 15, 15);
+  --appRadiusSmall: 15px;
   --appRadiusMain: 10px;
 }
 

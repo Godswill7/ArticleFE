@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
-import Me from "../../assets/Me.jpg"
+import DP from "../../assets/DP.png"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -10,8 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 const Register = () => {
     const navigate = useNavigate()
-    const [image, setImage] = useState(Me)
-    // const [image, setImage] = useState()
+    const [image, setImage] = useState(DP)
     const [avatar, setAvatar] = useState('')
 
     const schema = yup.object({
@@ -28,8 +27,8 @@ const Register = () => {
     const onHandleImage = (e: any) => {
         try {
             const file = e.target.files[0]
-            const realImage = URL.createObjectURL(file)
-            setImage(realImage)
+            // const realImage = URL.createObjectURL(file)
+            // setImage(realImage)
             setAvatar(file)
 
         } catch (error) {

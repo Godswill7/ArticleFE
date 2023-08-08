@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+// import React, {useState, useRef } from 'react'
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 
 
@@ -45,48 +47,116 @@ const Data=[
     "Programming",
     "Programming",
 ]
+// const Category = () => {
+
+//     const [State, setState] = useState(0)
+
+//     const onStateChange =(event: React.ChangeEvent<HTMLInputElement>)=>{
+//         const { onclick } = event.target;
+//         setState(prevCount => (onclick ? prevCount + 1 : prevCount - 1));
+//         event.preventDefault();
+//     }
+//   return (
+//     <div>
+//         <Container>
+//             <Main>
+//                 <Logo>LOGO</Logo>
+
+//                 <Div>
+//                     <BigText>What are you interested in?</BigText>
+//                     <SmallText>Choose FIve only</SmallText>
+//                 </Div>
+
+//                 <Holder
+//                 >
+//                     {
+//                         Data.map((props, e:any)=>(
+//                             <Hold
+//                             onClick={()=>{
+//                                 onStateChange(e)
+//                             }}
+//                             ><Text>{props}</Text>
+//                             <Icon/></Hold>
+//                         ))
+//                     }
+//                 </Holder>
+//                 <Div>
+//                     <Button
+//                      active={State === 5} disabled={State !== 5}
+//                     >Continue</Button>
+//                 </Div>
+//             </Main>
+//         </Container>
+//     </div>
+//   )
+// }
+
+
+
+
+
 const Category = () => {
 
-    const [State, setState] = useState(0)
-
-    const onStateChange =(event: React.ChangeEvent<HTMLInputElement>)=>{
-        const { onclick } = event.target;
-        setState(prevCount => (onclick ? prevCount + 1 : prevCount - 1));
+    const [State, setState] = useState(0);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [eventTarget, setEventTarget] : any= useState();
+    const [onclick, setOnclick]: any = useState();
+  
+    const onStateChange =(event: React.MouseEvent)=>{
+      setEventTarget(event.target);
+      setOnclick(eventTarget.onclick);
+      setState(prevCount => (event.target ? prevCount + 1 : prevCount - 1));
+      if(State === 5){
+          setButtonDisabled(true);
+      }else{
+          setButtonDisabled(false);
+      }
+      event.preventDefault();
     }
-  return (
-    <div>
-        <Container>
-            <Main>
-                <Logo>LOFO</Logo>
+  
+    useEffect(() => {
+      if (eventTarget) {
+        // The component is rendered and mounted, so the event target is not undefined.
+        setOnclick(eventTarget.onclick);
+      }
+    }, [eventTarget]);
+  
+    return (
+      <div>
+          <Container>
+              <Main>
+                  <Logo>LOGO</Logo>
+  
+                  <Div>
+                      <BigText>What are you interested in?</BigText>
+                      <SmallText>Choose FIve only</SmallText>
+                  </Div>
+  
+                  <Holder
+                  >
+                      {
+                          Data.map((props, e:any)=>(
+                              <Hold
+                              onClick={()=>{
+                                  onStateChange(e)
+                              }}
+                              ><Text>{props}</Text><Icon/></Hold>
+                          ))
+                      }
+                  </Holder>
+                  <Div>
+                      <Button
+                       active={State === 5} disabled={buttonDisabled}
+                      >Continue</Button>
+                  </Div>
+              </Main>
+          </Container>
+      </div>
+    )
+  }
 
-                <Div>
-                    <BigText>What are you interested in?</BigText>
-                    <SmallText>Choose FIve only</SmallText>
-                </Div>
 
-                <Holder
-                >
-                    {
-                        Data.map((props, e:any)=>(
-                            <Hold
-                            onClick={()=>{
-                                onStateChange(e)
-                            }}
-                            ><Text>{props}</Text><Icon/></Hold>
-                        ))
-                    }
-                </Holder>
 
-                <Div>
-                    <Button
-                     active={State === 5} disabled={State !== 5}
-                    >Continue</Button>
-                </Div>
-            </Main>
-        </Container>
-    </div>
-  )
-}
 
 export default Category
 const Button = styled.button<{ active: boolean }>`
@@ -110,7 +180,10 @@ background-color: silver;
 border-radius: 30px;
 cursor: pointer;
 margin: 20px;
-
+:hover{
+transform: scale(1.20);
+transition: all 400ms;
+}
 
 `
 const Holder = styled.div`

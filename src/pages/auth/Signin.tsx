@@ -65,7 +65,7 @@ const SignIn = () => {
                         <LineText>Don't have an Account</LineText>
                         <Line />
                     </Holder>
-                    <Button2 to="/register" >Sign up</Button2>
+                    <Button2 to="/" >Sign up</Button2>
                 </Main>
             </Container>
         </div>
